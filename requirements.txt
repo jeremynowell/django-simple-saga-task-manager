@@ -1,0 +1,5 @@
+django>=1.8,<1.9
+django-kronos>=0.9
+django-picklefield>=0.3.2
+django-widget-tweaks>=1.4.1
+saga-python>=0.41.1

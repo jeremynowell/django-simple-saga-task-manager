@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Tasks{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1>Status of Tasks</h1>
+</div>
+<div class="container">
+  <div class="row">
+{% if object_list %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Type</th><th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for task in object_list %}
+      <tr>
+        <td><a href="{% url 'task_status' task.pk %}">{{ task.pk}}</a></td><td>{{ task.name }}</td><td>{{ task.type }}</td><td>{{ task.status }}</td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <h2>No tasks exist in the database</h2>
+{% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+.add-row {
+	.make-sm-column(3);
+	float: left;
+}

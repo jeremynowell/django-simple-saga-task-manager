@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Submit a Task{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1>Submit a New Task</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <form class="form-horizontal" action="{% url 'submit' %}" method="post">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Error! {{ form.non_field_errors }}</strong>
+      </div>
+      {% endif %}
+      <div class="form-group {% if form.task_name.errors %}has-error{% endif %}">
+        <label class="col-sm-3 control-label" for="{{ form.task_name.id_for_label }}">{{ form.task_name.label }}</label>
+        <div class="col-sm-9">
+          {% render_field form.task_name class+="form-control" placeholder=form.task_name.label %}
+        </div>
+        {% if form.task_name.errors %}
+        <div class="col-sm-offset-3 col-sm-9">
+          {% for error in form.task_name.errors %}
+          <span class="text-danger" style="padding-left: 8px;">{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% for arg_form in arg_formset %}
+      <div class="form-group arg-form-container {% if arg_form.argument.errors %}has-error{% endif %}">
+        <label class="col-sm-3 control-label" for="{{ arg_form.argument.id_for_label }}">{{ arg_form.argument.label }}</label>
+        <div class="col-sm-7">
+          {% render_field arg_form.argument class+="form-control" placeholder=arg_form.argument.label data-repeatable="true" %}
+        </div>
+        {% if arg_form.argument.errors %}
+        <div class="col-sm-offset-3 col-sm-9">
+          {% for error in arg_form.argument.errors %}
+          <span class="text-danger" style="padding-left: 8px;">{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+      {{ arg_formset.management_form }}
+
+      {% for env_form in env_formset %}
+      <div class="form-group env-form-container {% if env_form.variable_name.errors %}has-error{% endif %}">
+        <label class="col-sm-3 control-label" for="{{ env_form.variable_name.id_for_label }}">Environment Variable</label>
+        <div class="col-sm-3">
+          {% render_field env_form.variable_name class+="form-control" placeholder=env_form.variable_name.label data-repeatable="true" %}
+        </div>
+        {% if env_form.variable_name.errors %}
+        <div class="col-sm-offset-3 col-sm-9">
+          {% for error in env_form.variable_name.errors %}
+          <span class="text-danger" style="padding-left: 8px;">{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="col-sm-3">
+          {% render_field env_form.variable_value class+="form-control" placeholder=env_form.variable_value.label data-repeatable="true" %}
+        </div>
+        {% if env_form.variable_value.errors %}
+        <div class="col-sm-offset-3 col-sm-9">
+          {% for error in env_form.variable_value.errors %}
+          <span class="text-danger" style="padding-left: 8px;">{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+      {{ env_formset.management_form }}
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="/js/jquery.formset.js"></script>
+<script type="text/javascript">
+    $(function() {
+    	$('.arg-form-container').formset({
+    	    prefix: '{{ arg_formset.prefix }}',
+          	formCssClass: 'dynamic-fs1',
+	        addText: 'Add Argument',
+    	    deleteText: 'Remove Argument',
+        });
+    	$('.env-form-container').formset({
+    	    prefix: '{{ env_formset.prefix }}',
+    	    formCssClass: 'dynamic-fs2',
+    	    addText: 'Add Environment Variable',
+    	    deleteText: 'Remove Environment Variable',
+    	});
+    });
+</script>
+{% endblock %}

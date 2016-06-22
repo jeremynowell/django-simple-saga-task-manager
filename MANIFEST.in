@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+recursive-include simple_task_manager/data *
+recursive-include simple_task_manager/templates *
+recursive-include simple_task_manager/settings *
+recursive-include docs *
