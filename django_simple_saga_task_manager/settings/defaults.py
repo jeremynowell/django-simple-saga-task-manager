@@ -14,7 +14,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_saga_simple_task_manager',
+    'django_simple_saga_task_manager',
     'widget_tweaks',
     'kronos',
 )

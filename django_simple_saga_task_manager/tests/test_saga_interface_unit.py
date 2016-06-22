@@ -1,8 +1,8 @@
 import os
 
 from django.test import override_settings
-from django_saga_simple_task_manager.tests.saga_test_case import SagaTestCase
-from django_saga_simple_task_manager.saga_interface import local_working_dir,\
+from django_simple_saga_task_manager.tests.saga_test_case import SagaTestCase
+from django_simple_saga_task_manager.saga_interface import local_working_dir,\
             remote_working_dir, \
             local_job_service_url, remote_job_service_url,\
             local_file_server_url, remote_file_server_url,\

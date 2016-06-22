@@ -1,9 +1,9 @@
 import os
 import time
 
-from django_saga_simple_task_manager.tests.saga_test_case import SagaTestCase
-from django_saga_simple_task_manager.models import Task
-from django_saga_simple_task_manager.saga_interface import SAGATaskInterface
+from django_simple_saga_task_manager.tests.saga_test_case import SagaTestCase
+from django_simple_saga_task_manager.models import Task
+from django_simple_saga_task_manager.saga_interface import SAGATaskInterface
 
 class SagaInterfaceEndToEndRemoteTests(SagaTestCase):
 

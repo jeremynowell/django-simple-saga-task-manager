@@ -1,7 +1,7 @@
 from django.db import transaction
 from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
-from django_saga_simple_task_manager.models import Task
+from django_simple_saga_task_manager.models import Task
 
 def submit_task(task_name,
                 remote=False,

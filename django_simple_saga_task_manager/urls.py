@@ -1,12 +1,12 @@
 import os
 from django.conf.urls import patterns, include, url
 #from django.contrib import admin
-from django_saga_simple_task_manager import settings
-from django_saga_simple_task_manager import views
+from django_simple_saga_task_manager import settings
+from django_simple_saga_task_manager import views
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'django_saga_simple_task_manager.views.home', name='home'),
+    # url(r'^$', 'django_simple_saga_task_manager.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     #url(r'^admin/', include(admin.site.urls)),
