@@ -1,8 +1,8 @@
 import os
 from django.conf.urls import patterns, include, url
 #from django.contrib import admin
-from django_simple_saga_task_manager import settings
-from django_simple_saga_task_manager import views
+from simple_saga_task_manager import settings
+from simple_saga_task_manager import views
 
 urlpatterns = patterns('',
     # Examples:

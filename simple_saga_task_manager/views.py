@@ -3,9 +3,9 @@ from django.forms import formset_factory
 from django.shortcuts import render, render_to_response
 from django.template.context import RequestContext
 from django.views import generic
-from django_simple_saga_task_manager import api as api
-from django_simple_saga_task_manager.forms import TaskForm, ArgumentForm, EnvironmentForm
-from django_simple_saga_task_manager.models import Task
+from simple_saga_task_manager import api as api
+from simple_saga_task_manager.forms import TaskForm, ArgumentForm, EnvironmentForm
+from simple_saga_task_manager.models import Task
 from django.http.response import HttpResponseRedirect
 
 LOG = logging.getLogger(__name__)

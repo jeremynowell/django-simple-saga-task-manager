@@ -1,19 +1,19 @@
 import os
 import time
 
-from django_simple_saga_task_manager.tests.saga_test_case import SagaTestCase
-from django_simple_saga_task_manager.models import Task
-from django_simple_saga_task_manager.saga_interface import SAGATaskInterface
+from simple_saga_task_manager.tests.saga_test_case import SagaTestCase
+from simple_saga_task_manager.models import Task
+from simple_saga_task_manager.saga_interface import SAGATaskInterface
 
-class SagaInterfaceEndToEndLocalTests(SagaTestCase):
+class SagaInterfaceEndToEndRemoteTests(SagaTestCase):
 
-    def test_end_to_end_local(self):
+    def test_end_to_end_remote(self):
         # Create task in DB
         # Construct task name
-        task_name = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'test-tasks', 'hello-world.sh'))
-        task = self.create_local_queued_task(task_name)
+        task_name = '/bin/date'
+        task = self.create_remote_queued_task(task_name)
 
-        si = SAGATaskInterface(False)
+        si = SAGATaskInterface(True)
         si.initialiseService()
         si.submit_saga_task(task)
 
@@ -40,13 +40,13 @@ class SagaInterfaceEndToEndLocalTests(SagaTestCase):
         self.check_output_files_exist(task)
 
 
-    def test_end_to_end_local_context_manager(self):
+    def test_end_to_end_remote_context_manager(self):
         # Create task in DB
         # Construct task name
-        task_name = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'test-tasks', 'hello-world.sh'))
-        task = self.create_local_queued_task(task_name)
+        task_name = '/bin/date'
+        task = self.create_remote_queued_task(task_name)
 
-        with (SAGATaskInterface(False)) as si:
+        with (SAGATaskInterface(True)) as si:
             si.submit_saga_task(task)
 
             # Task should now be running
@@ -70,16 +70,16 @@ class SagaInterfaceEndToEndLocalTests(SagaTestCase):
         self.check_output_files_exist(task)
 
 
-    def test_end_to_end_local_args(self):
+    def test_end_to_end_remote_args(self):
         output_file = 'test.out'
         task_args = ['Hello World', '> ' + output_file]
         task_name = '/bin/echo'
         task_environment = {}
         output_files = [output_file]
-        task = Task.objects.create(name=task_name, arguments=task_args, status=Task.QUEUED, type=Task.LOCAL,
+        task = Task.objects.create(name=task_name, arguments=task_args, status=Task.QUEUED, type=Task.REMOTE,
                                    environment=task_environment, expected_output_files=output_files)
 
-        with (SAGATaskInterface(False)) as si:
+        with (SAGATaskInterface(True)) as si:
             si.submit_saga_task(task)
 
             # Task should now be running

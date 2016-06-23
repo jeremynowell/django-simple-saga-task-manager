@@ -4,8 +4,8 @@ import saga
 import shutil
 
 from django.conf import settings
-from django_simple_saga_task_manager.models import Task
-from django_simple_saga_task_manager.exceptions import SimpleTaskManagerException
+from simple_saga_task_manager.models import Task
+from simple_saga_task_manager.exceptions import SimpleTaskManagerException
 
 #Configure logging
 logger = logging.getLogger(__name__)

@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_simple_saga_task_manager',
+    'simple_saga_task_manager',
     'widget_tweaks',
     'kronos',
 )
@@ -52,9 +52,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_simple_saga_task_manager.urls'
+ROOT_URLCONF = 'simple_saga_task_manager.urls'
 
-WSGI_APPLICATION = 'django_simple_saga_task_manager.wsgi.application'
+WSGI_APPLICATION = 'simple_saga_task_manager.wsgi.application'
 
 
 # Database

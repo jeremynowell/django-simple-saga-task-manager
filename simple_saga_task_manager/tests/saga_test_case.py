@@ -4,7 +4,7 @@ import shutil
 from django.conf import settings
 from django.core.files import File
 from django.test import TestCase, override_settings
-from django_simple_saga_task_manager.models import StdError, StdOut, Task
+from simple_saga_task_manager.models import StdError, StdOut, Task
 
 TEST_DIR = os.path.join(os.path.dirname(__file__), 'temp')
 WORKING_DIR = os.path.join(os.path.dirname(__file__), 'working')

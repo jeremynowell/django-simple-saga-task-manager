@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django_simple_saga_task_manager.models import Task
-from django_simple_saga_task_manager.saga_interface import SAGATaskInterface
+from simple_saga_task_manager.models import Task
+from simple_saga_task_manager.saga_interface import SAGATaskInterface
 import logging
 import kronos
 

@@ -1,6 +1,6 @@
 import os
 
-from django_simple_saga_task_manager.settings.base import *
+from simple_saga_task_manager.settings.base import *
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'dev')
 
@@ -20,7 +20,7 @@ LOGGING = {
                         'file': {
                                  'level': 'DEBUG',
                                  'class': 'logging.FileHandler',
-                                 'filename': 'simple_task_manager.log',
+                                 'filename': 'simple_saga_task_manager.log',
                                  'formatter': 'verbose',
                                  },
                         'console': {
@@ -35,7 +35,7 @@ LOGGING = {
                                   'propagate': True,
                                   'level': 'ERROR',
                                   },
-                       'django_simple_saga_task_manager': {
+                       'simple_saga_task_manager': {
                                                'handlers': ['file', 'console'],
                                                'level': 'DEBUG',
                                                },

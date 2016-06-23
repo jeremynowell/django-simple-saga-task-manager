@@ -1,6 +1,7 @@
-include LICENSE
-include README.rst
-recursive-include simple_task_manager/data *
-recursive-include simple_task_manager/templates *
-recursive-include simple_task_manager/settings *
+include LICENSE.md
+include README.md
+recursive-include simple_saga_task_manager/data *
+recursive-include simple_saga_task_manager/management *
+recursive-include simple_saga_task_manager/settings *
+recursive-include simple_saga_task_manager/templates *
 recursive-include docs *

@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_simple_saga_task_manager.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "simple_saga_task_manager.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

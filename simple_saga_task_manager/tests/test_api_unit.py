@@ -2,9 +2,9 @@ import os
 
 from django.conf import settings
 from django.test import TestCase, override_settings
-import django_simple_saga_task_manager.api as api
-from django_simple_saga_task_manager.models import Task, InputFile
-from django_simple_saga_task_manager.tests.saga_test_case import SagaTestCase, TEST_DIR
+import simple_saga_task_manager.api as api
+from simple_saga_task_manager.models import Task, InputFile
+from simple_saga_task_manager.tests.saga_test_case import SagaTestCase, TEST_DIR
 
 INPUT_FILE = os.path.join(os.path.dirname(__file__), 'resources', 'input_test.txt')
 OUTPUT_FILE = os.path.join(os.path.dirname(__file__), 'resources', 'output_test.txt')
