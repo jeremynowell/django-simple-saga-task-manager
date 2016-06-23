@@ -5,7 +5,6 @@ from django.conf import settings
 from django.core.files import File
 from django.test import TestCase, override_settings
 from django_simple_saga_task_manager.models import StdError, StdOut, Task
-from django_simple_saga_task_manager.tests import util as util
 
 TEST_DIR = os.path.join(os.path.dirname(__file__), 'temp')
 WORKING_DIR = os.path.join(os.path.dirname(__file__), 'working')
@@ -14,12 +13,12 @@ WORKING_DIR = os.path.join(os.path.dirname(__file__), 'working')
                    SAGA_LOCAL_WORKING_DIR = WORKING_DIR)
 class SagaTestCase(TestCase):
     def setUp(self):
-        util.setup_dir(TEST_DIR)
-        util.setup_dir(WORKING_DIR)
+        self.setup_dir(TEST_DIR)
+        self.setup_dir(WORKING_DIR)
 
     def tearDown(self):
-        util.cleanup_dir(TEST_DIR)
-        util.cleanup_dir(WORKING_DIR)
+        self.cleanup_dir(TEST_DIR)
+        self.cleanup_dir(WORKING_DIR)
 
     def check_file_exists(self, relative_path):
         abs_path = os.path.join(TEST_DIR, relative_path)
